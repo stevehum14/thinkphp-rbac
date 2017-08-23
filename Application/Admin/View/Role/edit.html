@@ -1,0 +1,91 @@
+<layout name="layout"/>
+<link rel="stylesheet" href="__PUBLIC__/Admin/css/chosen.css" />
+<div class="col-xs-12">
+    <div class="space-12"></div>
+    <form class="form-horizontal" action="__SELF__" METHOD="post" enctype="multipart/form-data" role="form" onsubmit="return checkField();">
+        <input type="hidden" value="{$data['id']}" name="id" >
+        <!--<div class="form-group">-->
+        <!--<label class="col-sm-3 control-label no-padding-right" for="form-field-1">上级权限<span style="color:red;">*</span></label>-->
+        <!--<div class="col-sm-9">-->
+        <!--<select class="col-xs-10 col-sm-5" name="parent_id">-->
+        <!--<option value="0" selected="selected">顶级权限</option>-->
+        <!--<?php if($priData){ ?>-->
+        <!--<volist name="priData" id="item">-->
+        <!--<option value="{$item['id']}"><?php echo str_repeat('-',8*$item['level']).$item['name']; ?></option>-->
+        <!--</volist>-->
+        <!--<?php } ?>-->
+        <!--</select>-->
+        <!--</div>-->
+        <!--</div>-->
+        <div class="space-4"></div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 角色名称<span style="color:red;">*</span></label>
+            <div class="col-sm-9">
+                <input type="text" name="role_name" value="{$data['role_name']}" placeholder="请输入权限名称" class="col-xs-10 col-sm-5" />
+                <!--<div class="help-block col-xs-12 col-sm-reset inline"> Error tip help! </div>-->
+            </div>
+        </div>
+        <div class="space-4"></div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 权限列表 </label>
+            <div class="col-sm-9">
+                <!--<input type="text" name="module_name" placeholder="请输入模块名称" class="col-xs-10 col-sm-5" />-->
+                <?php foreach($priData as $v){
+                if(in_array($v['id'],$arr))
+                $check = 'checked';
+                else
+                $check = '';
+                ?>
+
+                <?php echo str_repeat('-',8*$v['level']);?>
+                <input type="checkbox" {$check} level_id = "{$v['level']}" value="{$v['id']}" name="pri_id[]" />
+                <?php echo $v['name']; ?><br>
+
+                <?php } ?>
+            </div>
+        </div>
+        <!--<div class="space-4"></div>-->
+        <!--<div class="form-group">-->
+        <!--<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 控制器名称 </label>-->
+        <!--<div class="col-sm-9">-->
+        <!--<input type="text" name="controller_name" placeholder="请输入控制器名称" class="col-xs-10 col-sm-5" />-->
+        <!--</div>-->
+        <!--</div>-->
+        <!--<div class="space-4"></div>-->
+        <!--<div class="form-group">-->
+        <!--<label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 方法名称 </label>-->
+        <!--<div class="col-sm-9">-->
+        <!--<input type="text" name="action_name" placeholder="请输入方法名称" class="col-xs-10 col-sm-5" />-->
+        <!--</div>-->
+        <!--</div>-->
+        <div class="space-4"></div>
+
+
+        <div class="clearfix form-actions">
+            <div class="col-md-offset-3 col-md-9">
+                <button class="btn btn-info" type="submit">
+                    <i class="icon-ok bigger-110"></i>
+                    提交
+                </button>
+
+                &nbsp; &nbsp; &nbsp;
+                <button class="btn" type="reset">
+                    <i class="icon-undo bigger-110"></i>
+                    重置
+                </button>
+            </div>
+        </div>
+
+    </form>
+</div>
+<script type="text/javascript">
+    window.jQuery || document.write("<script src='__PUBLIC__/Admin/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+</script>
+<script src="__PUBLIC__/Admin/js/chosen.jquery.min.js"></script>
+<script>
+    function checkField(){
+
+//    alert("sss");
+
+    }
+</script>

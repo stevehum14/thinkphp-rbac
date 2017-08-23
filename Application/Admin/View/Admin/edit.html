@@ -1,0 +1,90 @@
+<layout name="layout"/>
+<link rel="stylesheet" href="__PUBLIC__/Admin/css/chosen.css" />
+<div class="col-xs-12">
+    <div class="space-12"></div>
+    <form class="form-horizontal" action="__SELF__" METHOD="post" enctype="multipart/form-data" role="form" onsubmit="return checkField();">
+        <input type="hidden" name="id" value="{$data['id']}">
+        <div class="space-4"></div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 角色列表 </label>
+            <div class="col-sm-9" style="padding-top: 6px">
+                <!--<input type="text" name="module_name" placeholder="请输入模块名称" class="col-xs-10 col-sm-5" />-->
+                <?php
+                  if($data['id'] == 1)
+                {
+                echo "超级管理员";
+                }else{
+
+
+                 ?>
+
+                <?php foreach($roleData as $v){
+                if(in_array($v['id'],$arr))
+                $check = 'checked';
+                else
+                $check = '';
+                ?>
+
+                <input type="checkbox" {$check} level_id = "{$v['level']}" value="{$v['id']}" name="role_id[]" />
+                <?php echo $v['role_name']; ?>&nbsp;&nbsp;
+                <?php } ?>
+                <?php } ?>
+            </div>
+        </div>
+        <div class="space-4"></div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label no-padding-right" for="form-field-1">用户名<span style="color:red;">*</span></label>
+            <div class="col-sm-9">
+                <input type="text" name="username" placeholder="请输入用户名" value="{$data['username']}" class="col-xs-10 col-sm-5" />
+                <!--<div class="help-block col-xs-12 col-sm-reset inline"> Error tip help! </div>-->
+            </div>
+        </div>
+        <div class="space-4"></div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 密码<span style="color:red;">*</span></label>
+            <div class="col-sm-9">
+                <input type="password" name="password" placeholder="请输入密码" class="col-xs-10 col-sm-5" />
+                <!--<div class="help-block col-xs-12 col-sm-reset inline"> Error tip help! </div>-->
+            </div>
+        </div>
+        <div class="space-4"></div>
+        <div class="form-group">
+            <label class="col-sm-3 control-label no-padding-right" for="form-field-1"> 确认密码<span style="color:red;">*</span></label>
+            <div class="col-sm-9">
+                <input type="password" name="cpassword" placeholder="请再次输入密码" class="col-xs-10 col-sm-5" />
+                <!--<div class="help-block col-xs-12 col-sm-reset inline"> Error tip help! </div>-->
+            </div>
+        </div>
+
+
+        <div class="space-4"></div>
+
+
+        <div class="clearfix form-actions">
+            <div class="col-md-offset-3 col-md-9">
+                <button class="btn btn-info" type="submit">
+                    <i class="icon-ok bigger-110"></i>
+                    提交
+                </button>
+
+                &nbsp; &nbsp; &nbsp;
+                <button class="btn" type="reset">
+                    <i class="icon-undo bigger-110"></i>
+                    重置
+                </button>
+            </div>
+        </div>
+
+    </form>
+</div>
+<script type="text/javascript">
+    window.jQuery || document.write("<script src='__PUBLIC__/Admin/js/jquery-2.0.3.min.js'>"+"<"+"/script>");
+</script>
+<script src="__PUBLIC__/Admin/js/chosen.jquery.min.js"></script>
+<script>
+    function checkField(){
+
+//    alert("sss");
+
+    }
+</script>
